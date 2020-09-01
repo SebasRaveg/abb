@@ -56,8 +56,38 @@ public class ArbolBinario {
         }
     }
     
+    /**
+     * Método que retorna un arreglo de enteros con los datos de recorrer el
+     * árbol en preorden
+     *
+     * @return ArrayList
+     * @throws ArbolBinarioException
+    */
+    public ArrayList preOrden() throws ArbolBinarioException {
+        //isLleno();
+        ArrayList l = new ArrayList();
+        if (raiz != null) {
+            preOrden(raiz, l);
+        }        
+        return l;
+    }
+    /**
+     * Método recursivo que recorre todo el árbol en preorden
+     * @param temp Ayudante que toma referencia en un nodo
+     * @param listado Acumulador para registrar el dato del nodo visitado
+    */
+    private void preOrden(Nodo temp, ArrayList listado)
+    {
+        //Condición que garantiza que el método finalice
+        if(temp!=null)
+        {
+            listado.add(temp.getDato());
+            preOrden(temp.getIzquierda(), listado);
+            preOrden(temp.getDerecha(), listado);
+        }
+    }
     
-     public ArrayList inOrden() throws ArbolBinarioException{
+    public ArrayList inOrden() throws ArbolBinarioException{
         isLleno();
         ArrayList l=new ArrayList();
         inOrden(raiz,l);
