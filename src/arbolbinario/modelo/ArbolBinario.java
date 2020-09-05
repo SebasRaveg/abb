@@ -87,13 +87,25 @@ public class ArbolBinario {
         }
     }
     
+    /**
+     * Método que retorna un arreglo de enteros con los datos de recorrer el
+     * árbol en inOrden
+     *
+     * @return ArrayList
+     * @throws ArbolBinarioException
+    */
     public ArrayList inOrden() throws ArbolBinarioException{
         isLleno();
         ArrayList l=new ArrayList();
         inOrden(raiz,l);
         return l;
     }
-
+    
+    /**
+     * Método recursivo que recorre todo el árbol en inOrden
+     * @param reco Ayudante que toma referencia en un nodo
+     * @param l Acumulador para registrar el dato del nodo visitado
+    */
     private void inOrden(Nodo reco,ArrayList l) {
         if (reco != null) {
             inOrden(reco.getIzquierda(),l);
@@ -102,18 +114,45 @@ public class ArbolBinario {
         }
     }
     
-    public ArrayList postOrden() throws ArbolBinarioException{
+    /**
+     * Método que retorna un arreglo de enteros con los datos de recorrer el
+     * árbol en posOrden
+     *
+     * @return ArrayList
+     * @throws ArbolBinarioException
+    */
+    public ArrayList posOrden() throws ArbolBinarioException{
         //isLleno();
         ArrayList l=new ArrayList();
-        postOrden(raiz,l);
+        posOrden(raiz,l);
         return l;
     }
-
-    private void postOrden(Nodo reco,ArrayList l) {
+    
+    /**
+     * Método recursivo que recorre todo el árbol en posOrden
+     * @param reco Ayudante que toma referencia en un nodo
+     * @param l Acumulador para registrar el dato del nodo visitado
+    */
+    private void posOrden(Nodo reco,ArrayList l) {
         if (reco != null) {
-            postOrden(reco.getIzquierda(),l);
-            postOrden(reco.getDerecha(),l);
+            posOrden(reco.getIzquierda(),l);
+            posOrden(reco.getDerecha(),l);
             l.add(reco.getDato() + " ");
+        }
+    }
+    
+    public ArrayList impNiveles() throws ArbolBinarioException{
+        //isLleno();
+        ArrayList l=new ArrayList();
+        impNiveles(raiz, 1,l);
+        return l;
+    }
+    
+    private void impNiveles(Nodo reco, int nivel, ArrayList l){
+        if (reco != null) {
+            impNiveles(reco.getIzquierda(), nivel + 1, l);
+            l.add(reco.getDato() + " Nivel: (" + nivel + ") ");
+            impNiveles(reco.getDerecha(), nivel + 1, l);
         }
     }
     
