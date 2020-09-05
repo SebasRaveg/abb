@@ -102,6 +102,22 @@ public class ArbolBinario {
         }
     }
     
+    public ArrayList postOrden() throws ArbolBinarioException{
+        //isLleno();
+        ArrayList l=new ArrayList();
+        postOrden(raiz,l);
+        return l;
+    }
+
+    private void postOrden(Nodo reco,ArrayList l) {
+        if (reco != null) {
+            postOrden(reco.getIzquierda(),l);
+            postOrden(reco.getDerecha(),l);
+            l.add(reco.getDato() + " ");
+        }
+    }
+    
+    
     public void llenarArbol(String datos) throws ArbolBinarioException
     {
         String[] arrayDatos= datos.split(",");
