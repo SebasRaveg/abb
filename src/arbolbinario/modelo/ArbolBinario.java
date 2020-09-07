@@ -56,44 +56,30 @@ public class ArbolBinario {
         }
     }
     
-    /**
-     * Método que retorna un arreglo de enteros con los datos de recorrer el
-     * árbol en preorden
-     *
-     * @return ArrayList
-     * @throws ArbolBinarioException
-    */
+    //preOrden
+    
     public ArrayList preOrden() throws ArbolBinarioException {
-        //isLleno();
+        isLleno();
         ArrayList l = new ArrayList();
         if (raiz != null) {
             preOrden(raiz, l);
         }        
         return l;
     }
-    /**
-     * Método recursivo que recorre todo el árbol en preorden
-     * @param temp Ayudante que toma referencia en un nodo
-     * @param listado Acumulador para registrar el dato del nodo visitado
-    */
-    private void preOrden(Nodo temp, ArrayList listado)
+
+    private void preOrden(Nodo temp, ArrayList l)
     {
         //Condición que garantiza que el método finalice
         if(temp!=null)
         {
-            listado.add(temp.getDato());
-            preOrden(temp.getIzquierda(), listado);
-            preOrden(temp.getDerecha(), listado);
+            l.add(temp.getDato());
+            preOrden(temp.getIzquierda(), l);
+            preOrden(temp.getDerecha(), l);
         }
     }
     
-    /**
-     * Método que retorna un arreglo de enteros con los datos de recorrer el
-     * árbol en inOrden
-     *
-     * @return ArrayList
-     * @throws ArbolBinarioException
-    */
+     //inOrden
+    
     public ArrayList inOrden() throws ArbolBinarioException{
         isLleno();
         ArrayList l=new ArrayList();
@@ -101,11 +87,6 @@ public class ArbolBinario {
         return l;
     }
     
-    /**
-     * Método recursivo que recorre todo el árbol en inOrden
-     * @param reco Ayudante que toma referencia en un nodo
-     * @param l Acumulador para registrar el dato del nodo visitado
-    */
     private void inOrden(Nodo reco,ArrayList l) {
         if (reco != null) {
             inOrden(reco.getIzquierda(),l);
@@ -114,25 +95,15 @@ public class ArbolBinario {
         }
     }
     
-    /**
-     * Método que retorna un arreglo de enteros con los datos de recorrer el
-     * árbol en posOrden
-     *
-     * @return ArrayList
-     * @throws ArbolBinarioException
-    */
+    //posOrden
+    
     public ArrayList posOrden() throws ArbolBinarioException{
-        //isLleno();
+        isLleno();
         ArrayList l=new ArrayList();
         posOrden(raiz,l);
         return l;
     }
     
-    /**
-     * Método recursivo que recorre todo el árbol en posOrden
-     * @param reco Ayudante que toma referencia en un nodo
-     * @param l Acumulador para registrar el dato del nodo visitado
-    */
     private void posOrden(Nodo reco,ArrayList l) {
         if (reco != null) {
             posOrden(reco.getIzquierda(),l);
@@ -141,8 +112,10 @@ public class ArbolBinario {
         }
     }
     
+    // PorNiveles
+    
     public ArrayList impNiveles() throws ArbolBinarioException{
-        //isLleno();
+        isLleno();
         ArrayList l=new ArrayList();
         impNiveles(raiz, 1,l);
         return l;
@@ -155,7 +128,30 @@ public class ArbolBinario {
             impNiveles(reco.getDerecha(), nivel + 1, l);
         }
     }
+        
+    //Hojas
     
+    public ArrayList getHojas() throws ArbolBinarioException {
+        isLleno();
+        ArrayList l = new ArrayList();
+        getHojas(this.raiz, l);
+        return (l);
+    }
+    
+    private void getHojas(Nodo r, ArrayList l) {
+        if (r != null) {
+            if (this.esHoja(r)) {
+                l.add(r.getDato());
+            }
+            getHojas(r.getIzquierda(), l);
+            getHojas(r.getDerecha(), l);
+        }
+
+    }
+       
+    protected boolean esHoja(Nodo x) {
+        return (x != null && x.getIzquierda()== null && x.getDerecha()== null);
+    }
     
     public void llenarArbol(String datos) throws ArbolBinarioException
     {
