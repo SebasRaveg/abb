@@ -153,6 +153,68 @@ public class ArbolBinario {
         return (x != null && x.getIzquierda()== null && x.getDerecha()== null);
     }
     
+    //Podar
+    public void podar() {
+        podar(this.raiz);
+    }
+
+    private void podar(Nodo x) {
+        if (x == null) {
+            return;
+        }
+        if (this.esHoja(x.getIzquierda())) {
+            x.setIzquierda(null);
+        }
+        if (this.esHoja(x.getDerecha())) {
+            x.setDerecha(null);
+        }
+        podar(x.getIzquierda());
+        podar(x.getDerecha());
+    }
+    
+    //Balance
+    
+    int subizq = 0;
+    int subder = 0;
+
+    public String imprimirBalance() {
+         subizq = 0;
+         subder = 0;
+
+        Balance(this.raiz, true, 0);
+        //System.out.println("lado Izquierdo " + subizq + " Lado Derecho " + subder);
+        if (subizq - subder == 0) {
+            return ("El balance es: 0 ");
+        } else if (subizq - subder == -1) {
+            return("El balance es -1, derecha");
+        } else if (subizq - subder == 1) {
+            return("El balance 1, izquierda");
+        } else {
+            return("No es balanceado.."
+                    + "porque es mas grande el lado "
+                    + ((subizq > subder) ? "Izquierdo" : "Derecho"));
+        }
+
+    }
+
+    public void Balance(Nodo reco, boolean lado, int i) {
+        if (reco != null) {
+            if (reco.getDerecha()== null && reco.getIzquierda()== null) {
+                if (lado) {
+                    subder = (i > subder) ? i : subder;
+                } else {
+                    subizq = (i > subizq) ? i : subizq;
+                }
+            }
+            Balance(reco.getDerecha(), lado, i + 1);
+            if (i == 0) {
+                lado = false;
+            }
+            Balance(reco.getIzquierda(), lado, i + 1);
+        }
+
+    }
+    
     public void llenarArbol(String datos) throws ArbolBinarioException
     {
         String[] arrayDatos= datos.split(",");
