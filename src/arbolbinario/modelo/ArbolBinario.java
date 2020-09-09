@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class ArbolBinario {
 
     private Nodo raiz;
-
+    
     //public void adicionarNodo()
     public Nodo getRaiz() {
         return raiz;
@@ -128,7 +128,40 @@ public class ArbolBinario {
             impNiveles(reco.getDerecha(), nivel + 1, l);
         }
     }
+    
+     
+    /**
+     * Metodo es el que es el que sirve para buscar el nodo 
+     * @param ref es el parámetro encargado de devolver el dato
+     * @param buscarDato es el parámetro encargado de comparar los datos 
+     * @return el que devuelve el metotodo buscar del nodo
+     */
+    public Nodo buscarNodo(int buscarDato, Nodo ref) {
+        if (ref != null) 
+        {
+           if (ref.getDato() == buscarDato) 
+         {
+          return ref;
+         }
+        else 
+           {
+             if (buscarDato < ref.getDato()) 
+             {
+              return buscarNodo(buscarDato, ref.getIzquierda());
+             }
+             else 
+             {
+             return buscarNodo(buscarDato, ref.getDerecha());
+             }
+           }
+        }
+        else
+        {
+         return null;  
+        }
         
+    }
+    
     //Hojas
     
     public ArrayList getHojas() throws ArbolBinarioException {
@@ -302,4 +335,5 @@ public class ArbolBinario {
         
     }
 
+   
 }
