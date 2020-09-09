@@ -292,15 +292,5 @@ public class ArbolBinario {
         return ("Valor eliminado: " + reco.getDato());
     }
     
-    
-    public void llenarArbol(String datos) throws ArbolBinarioException
-    {
-        String[] arrayDatos= datos.split(",");
-        for(String cadena: arrayDatos)
-        {
-            adicionarNodo(Integer.parseInt(cadena), raiz);
-        }
-        
-    }
 
 }
