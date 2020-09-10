@@ -129,13 +129,48 @@ public class ArbolBinario {
         }
     }
     
-     
-    /**
-     * Metodo es el que es el que sirve para buscar el nodo 
-     * @param ref es el parámetro encargado de devolver el dato
-     * @param buscarDato es el parámetro encargado de comparar los datos 
-     * @return el que devuelve el metotodo buscar del nodo
-     */
+    //NivelesOrdenados
+    
+    String[] niveles;
+    int altura;
+    
+    public int alturaArbol() {
+        altura = 0;
+        alturaArbol(raiz, 0);
+        return altura;
+    }
+
+    private void alturaArbol(Nodo pivote, int nivel) {
+        if (pivote != null) {
+            alturaArbol(pivote.getIzquierda(), nivel + 1);
+            if (nivel > altura) {
+                altura = nivel;
+            }
+            alturaArbol(pivote.getDerecha(), nivel + 1);
+        }
+    }
+    
+    public ArrayList imprimirNivel() {
+        niveles = new String[altura + 1];
+        ArrayList l=new ArrayList();
+        imprimirNivel(raiz, 0);
+        for (int i = 0; i < niveles.length; i++) {
+            l.add(niveles[i] + " ");
+            //System.out.println(niveles[i] + " ");
+        }
+        return l;
+    }
+ 
+    public void imprimirNivel(Nodo pivote, int nivel2) {
+        if (pivote != null) {
+            niveles[nivel2] = pivote.getDato() + ", " + ((niveles[nivel2] != null) ? niveles[nivel2] : "");
+            imprimirNivel(pivote.getDerecha(), nivel2 + 1);
+            imprimirNivel(pivote.getIzquierda(), nivel2 + 1);
+        }
+    }
+    
+    //Buscar
+    
     public Nodo buscarNodo(int buscarDato, Nodo ref) {
         if (ref != null) 
         {
@@ -280,6 +315,23 @@ public class ArbolBinario {
             }
         }
         return lista;
+    }
+    
+    //Cambiar Valor
+    
+    public boolean cambiar() {
+            cambiar(raiz, 1);
+            //System.out.println();
+            return true;
+    }
+
+    private void cambiar(Nodo reco, int nivel) {
+        if (reco != null) {
+            reco.setDato(reco.getDato() * 3);
+            cambiar(reco.getIzquierda(), nivel + 1);
+            //System.out.print(reco.getDato() + " Nivel: (" + nivel + ") ,");
+            cambiar(reco.getDerecha(), nivel + 1);
+        }
     }
     
 
