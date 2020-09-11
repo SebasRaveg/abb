@@ -197,6 +197,10 @@ public class ArbolBinario {
         
     }
     
+    //Borrar
+    
+    //Buscar Padre
+    
     //Hojas
     
     public ArrayList getHojas() throws ArbolBinarioException {
