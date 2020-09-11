@@ -197,10 +197,87 @@ public class ArbolBinario {
         
     }
     
-    //Borrar
+     /**
+     * Metodo padre este método consiste en que la raíz llama a la clase padre
+     * @param info este parámetro es el que se encarga de copiar la información del árbol en raiz
+     * @return es el encargado de retornar el dato raiz
+     */
+    public int padre(int info) {
+        if (info == 0 || this.raiz == null) {
+            return 0;
+        }
+        Nodo x = padre(this.raiz, info);
+        if (x == null) {
+            return 0;
+        }
+        return (x.getDato());
+    }
+    /**
+     * Metdodo padre este método se encarga de encontrar el padre
+     * @param x este parâmetro se encarga de identificar el nodo en la clase padre 
+     * @param info en este parámetro es el que guarda la información 
+     * @return devuelve lo que es la información del nodo padre
+     */
+    private Nodo padre(Nodo x, int info) {
+        if (x == null) {
+            return null;
+        }
+        if ((x.getIzquierda() != null && x.getIzquierda().getDato()==(info)) || (x.getDerecha() != null && x.getDerecha().getDato()==(info))) {
+            return (x);
+        }
+        Nodo y = padre(x.getIzquierda(), info);
+        if (y == null) {
+            return (padre(x.getDerecha(), info));
+        } else {
+            return (y);
+        }
+    }
     
-    //Buscar Padre
-    
+    //buscar min
+    /**
+     * Metodo el cual sirve para buscar el nodo mas pequeño
+     * @param r es el que busca el minimo
+     * @return retorna el menor dato
+     */
+    private Nodo buscarMin(Nodo r) {
+        for (; r.getIzquierda() != null; r = r.getIzquierda());
+        return (r);
+    }
+    //borrar
+    /**
+     * Metodo es el que es el que sirve para borrar el nodo
+     * @param r
+     * @param x
+     * @return
+     */
+    public Nodo borrarNodo (Nodo r, int x){
+        if (r == null) {
+            return null;//<--Dato no encontrado		
+        }
+        int compara = ((Comparable) r.getDato()).compareTo(x);
+        if (compara > 0) {
+            r.setIzquierda(borrarNodo(r.getIzquierda(), x));
+        } else if (compara < 0) {
+            r.setDerecha(borrarNodo(r.getDerecha(), x));
+        } else {
+            if (r.getIzquierda() != null && r.getDerecha() != null){
+                /*
+                 *	Buscar el menor de los derechos y lo intercambia por el dato
+                 *	que desea borrar. La idea del algoritmo es que el dato a borrar 
+                 *	se coloque en una hoja o en un nodo que no tenga una de sus ramas.
+                 **/
+                Nodo cambiar = buscarMin(r.getDerecha());
+                int aux = cambiar.getDato();
+                cambiar.setDato(r.getDato());
+                r.setDato(aux);
+                r.setDerecha(borrarNodo(r.getDerecha(), x));
+            } else {
+                r = (r.getIzquierda() != null) ? r.getIzquierda() : r.getDerecha();
+            }
+        }
+        return r;
+    }
+
     //Hojas
     
     public ArrayList getHojas() throws ArbolBinarioException {
