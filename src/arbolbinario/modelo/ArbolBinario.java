@@ -197,11 +197,8 @@ public class ArbolBinario {
         
     }
     
-     /**
-     * Metodo padre este método consiste en que la raíz llama a la clase padre
-     * @param info este parámetro es el que se encarga de copiar la información del árbol en raiz
-     * @return es el encargado de retornar el dato raiz
-     */
+    //Buscar Padre
+    
     public int padre(int info) {
         if (info == 0 || this.raiz == null) {
             return 0;
@@ -212,12 +209,7 @@ public class ArbolBinario {
         }
         return (x.getDato());
     }
-    /**
-     * Metdodo padre este método se encarga de encontrar el padre
-     * @param x este parâmetro se encarga de identificar el nodo en la clase padre 
-     * @param info en este parámetro es el que guarda la información 
-     * @return devuelve lo que es la información del nodo padre
-     */
+
     private Nodo padre(Nodo x, int info) {
         if (x == null) {
             return null;
@@ -233,23 +225,12 @@ public class ArbolBinario {
         }
     }
     
-    //buscar min
-    /**
-     * Metodo el cual sirve para buscar el nodo mas pequeño
-     * @param r es el que busca el minimo
-     * @return retorna el menor dato
-     */
     private Nodo buscarMin(Nodo r) {
         for (; r.getIzquierda() != null; r = r.getIzquierda());
         return (r);
     }
     //borrar
-    /**
-     * Metodo es el que es el que sirve para borrar el nodo
-     * @param r
-     * @param x
-     * @return
-     */
+
     public Nodo borrarNodo (Nodo r, int x){
         if (r == null) {
             return null;//<--Dato no encontrado		
