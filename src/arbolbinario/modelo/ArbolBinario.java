@@ -237,7 +237,7 @@ public class ArbolBinario {
     public void borrarNivel(int x) throws ArbolBinarioException{
         isLleno();
         nivel=1;
-        borrarNivel(raiz, nivel, x );
+        borrarNivel(raiz, nivel, x );    
     }    
     
     private void borrarNivel(Nodo reco, int nivel, int x ){
