@@ -229,6 +229,46 @@ public class ArbolBinario {
         for (; r.getIzquierda() != null; r = r.getIzquierda());
         return (r);
     }
+    
+    
+    // borrarNivel
+    int nivel;
+    
+    public void borrarNivel(int x) throws ArbolBinarioException{
+        isLleno();
+        nivel=1;
+        borrarNivel(raiz, nivel, x );
+    }    
+    
+    private void borrarNivel(Nodo reco, int nivel, int x ){
+            if (reco != null) {
+            borrarNivel(reco.getIzquierda(), nivel + 1,x);
+            if (nivel == x) {
+              borrarNodo(raiz, reco.getDato());
+            }
+            borrarNivel(reco.getDerecha(), nivel + 1,x);   
+        }
+        
+    }    
+
+        //Multiplicar
+    
+    public boolean Multiplicar(int x) {
+            Multiplicar(raiz, 1, x);
+            //System.out.println();
+            return true;
+    }
+
+    private void Multiplicar(Nodo reco, int nivel, int x) {
+        if (reco != null) {
+            reco.setDato(reco.getDato() * x);
+            Multiplicar(reco.getIzquierda(), nivel + 1, x);
+            //System.out.print(reco.getDato() + " Nivel: (" + nivel + ") ,");
+            Multiplicar(reco.getDerecha(), nivel + 1, x);
+        }
+    }
+     
+    
     //borrar
 
     public Nodo borrarNodo (Nodo r, int x){
