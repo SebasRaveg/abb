@@ -57,7 +57,6 @@ public class ArbolBinario {
     }
     
     //preOrden
-    
     public ArrayList preOrden() throws ArbolBinarioException {
         isLleno();
         ArrayList l = new ArrayList();
@@ -78,8 +77,7 @@ public class ArbolBinario {
         }
     }
     
-     //inOrden
-    
+    //inOrden
     public ArrayList inOrden() throws ArbolBinarioException{
         isLleno();
         ArrayList l=new ArrayList();
@@ -96,7 +94,6 @@ public class ArbolBinario {
     }
     
     //posOrden
-    
     public ArrayList posOrden() throws ArbolBinarioException{
         isLleno();
         ArrayList l=new ArrayList();
@@ -113,7 +110,6 @@ public class ArbolBinario {
     }
     
     // PorNiveles
-    
     public ArrayList impNiveles() throws ArbolBinarioException{
         isLleno();
         ArrayList l=new ArrayList();
@@ -130,7 +126,6 @@ public class ArbolBinario {
     }
     
     //NivelesOrdenados
-    
     String[] niveles;
     int altura;
     
@@ -170,8 +165,7 @@ public class ArbolBinario {
     }
     
     //Buscar
-    
-    public Nodo buscarNodo(int buscarDato, Nodo ref) {
+    public Nodo buscarNodo(int buscarDato, Nodo ref) throws ArbolBinarioException {
         if (ref != null) 
         {
            if (ref.getDato() == buscarDato) 
@@ -192,13 +186,13 @@ public class ArbolBinario {
         }
         else
         {
-         return null;  
+         //return null;
+         throw new ArbolBinarioException("El dato buscado no existe");
         }
         
     }
     
     //Buscar Padre
-    
     public int padre(int info) {
         if (info == 0 || this.raiz == null) {
             return 0;
@@ -251,8 +245,7 @@ public class ArbolBinario {
         
     }    
 
-        //Multiplicar
-    
+    //Multiplicar
     public boolean Multiplicar(int x) {
             Multiplicar(raiz, 1, x);
             //System.out.println();
@@ -268,9 +261,7 @@ public class ArbolBinario {
         }
     }
      
-    
     //borrar
-
     public Nodo borrarNodo (Nodo r, int x){
         if (r == null) {
             return null;//<--Dato no encontrado		
@@ -282,11 +273,6 @@ public class ArbolBinario {
             r.setDerecha(borrarNodo(r.getDerecha(), x));
         } else {
             if (r.getIzquierda() != null && r.getDerecha() != null){
-                /*
-                 *	Buscar el menor de los derechos y lo intercambia por el dato
-                 *	que desea borrar. La idea del algoritmo es que el dato a borrar 
-                 *	se coloque en una hoja o en un nodo que no tenga una de sus ramas.
-                 **/
                 Nodo cambiar = buscarMin(r.getDerecha());
                 int aux = cambiar.getDato();
                 cambiar.setDato(r.getDato());
@@ -300,7 +286,6 @@ public class ArbolBinario {
     }
 
     //Hojas
-    
     public ArrayList getHojas() throws ArbolBinarioException {
         isLleno();
         ArrayList l = new ArrayList();
@@ -343,7 +328,6 @@ public class ArbolBinario {
     }
     
     //Balance
-    
     int subizq = 0;
     int subder = 0;
 
@@ -385,8 +369,7 @@ public class ArbolBinario {
 
     }
     
-    //Obtener el numero de ramas
-   
+    //Obtener el numero de ramas   
     int numeroRamas = 0;
 
     public ArrayList<String>ObtenerRamamayor(){
@@ -419,8 +402,7 @@ public class ArbolBinario {
         return lista;
     }
     
-    //Cambiar Valor
-    
+    //Cambiar Valor    
     public boolean cambiar() {
             cambiar(raiz, 1);
             //System.out.println();
@@ -438,7 +420,6 @@ public class ArbolBinario {
     
 
     //Borrar menor
-
     public String borrarMenor() {
         Nodo reco=raiz.getIzquierda();
         if (raiz != null) {
@@ -459,7 +440,6 @@ public class ArbolBinario {
     }
 
     //Borrar Mayor
-
     public String borrarMayor() {
         Nodo reco=raiz.getIzquierda();
         if (raiz != null) {
@@ -487,6 +467,48 @@ public class ArbolBinario {
             adicionarNodo(Integer.parseInt(cadena), raiz);
         }
         
+    }
+    
+    //ContarNodos
+    public int contarNodos()    
+    {
+        return this.contarNodos(raiz);        
+    }    
+    
+    public int contarNodos(Nodo reco)
+    {
+        //Hacen el dllo del contar
+        if(reco==null)
+        {
+            return 0;
+        }
+        if(reco.isHoja())
+        {
+            return 1;
+        }
+        else
+        {   
+            return 1 + contarNodos(reco.getIzquierda())+ contarNodos(reco.getDerecha());
+        }
+    }
+    
+    //SumarNodos
+    public int sumarNodos(Nodo ref)
+    {
+        if(ref != null)
+        {
+            return ref.getDato() + sumarNodos(ref.getIzquierda()) 
+                    + sumarNodos(ref.getDerecha());
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public int sumarArbol()
+    {
+       return sumarNodos(raiz);
     }
 
    
