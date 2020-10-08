@@ -186,7 +186,6 @@ public class ArbolBinario {
         }
         else
         {
-         //return null;
          throw new ArbolBinarioException("El dato buscado no existe");
         }
         
