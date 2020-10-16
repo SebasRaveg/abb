@@ -45,5 +45,4 @@ public class NodoN2 {
     {
         hijos.add(hijo);
     }
-    
 }
