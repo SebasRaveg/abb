@@ -48,7 +48,7 @@ public class Nodo implements Serializable {
     public int calcularSuma()
     {
        int acumulador=0;
-       acumulador = this.dato.getSuma();
+       acumulador = this.dato.getNumero();
        if(this.izquierda!=null)
        {
            acumulador = acumulador + izquierda.getDato().getSuma(); //izquierda.calcularSuma();
