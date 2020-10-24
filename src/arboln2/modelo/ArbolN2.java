@@ -26,7 +26,7 @@ public class ArbolN2 {
         this.raiz = raiz;
     }
     
-    public void adicionarNodo(NodoN2 pivote, Dato hijo, Dato padre){
+    public void adicionarNodo(NodoN2 pivote, Empleados hijo, Empleados padre){
         if(raiz==null)
         {
             raiz= new NodoN2(hijo);

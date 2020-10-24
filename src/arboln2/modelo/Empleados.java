@@ -11,16 +11,16 @@ import java.io.Serializable;
  *
  * @author seba3
  */
-public class Dato implements Serializable{
+public class Empleados implements Serializable{
     private String identificacion;
     private String nombre;
     private int edad;
     
-    public Dato(){
+    public Empleados(){
         
     }
     
-    public Dato(String identificacion, String nombre, int edad){
+    public Empleados(String identificacion, String nombre, int edad){
         this.edad = edad;
         this.identificacion = identificacion;
         this.nombre = nombre;
