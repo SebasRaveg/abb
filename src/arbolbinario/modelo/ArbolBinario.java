@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class ArbolBinario {
 
-    private Nodo raiz;
+    public Nodo raiz;
     
     //public void adicionarNodo()
     public Nodo getRaiz() {
