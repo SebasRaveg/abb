@@ -26,53 +26,14 @@ public class ArbolN2 {
         this.raiz = raiz;
     }
     
-    public void adicionarNodo(NodoN2 pivote, Empleados hijo, Empleados padre){
-        if(raiz==null)
-        {
-            raiz= new NodoN2(hijo);
-        }    
-        else
-        {
-            if(pivote.getDato().getIdentificacion().equals(padre.getIdentificacion()))
-            {
-                pivote.aumentarHijo(new NodoN2(hijo));
-            }
-            else
-            {
-                for(NodoN2 hijoPivote: pivote.getHijos())
-                {
-                    if(hijoPivote.getDato().getIdentificacion().equals(padre.getIdentificacion()))
-                    {
-                        hijoPivote.aumentarHijo(new NodoN2(hijo));
-                        break;
-                    }
-                    else
-                    {
-                        adicionarNodo(hijoPivote, hijo, padre);
-                    }    
-                }    
-            }
-        }    
+    //Adicionar
+    /*
+    Se pregunta primero si el arbol tiene datos
+    Se pregunta quien es el padre y los datos que se van a ingresar.
+    */
+    public void adicionarNodo(Cliente padre, Cliente hijo){
+        
+        
     }
-    
-    public String recorrerArbolN2() throws ArbolNException{
-        if(raiz!=null)
-        {
-            String listado="";
-            listado += recorrerArbolN2(raiz, listado);
-            return listado;
-        }   
-        throw new ArbolNException("El árbol está vacío");
-    }
-    
-    public String recorrerArbolN2(NodoN2 pivote, String listado)
-    {
-        listado += "\n"+pivote.getDato();
-        for(NodoN2 hijo: pivote.getHijos())
-        {
-            listado = recorrerArbolN2(hijo, listado);
-        }   
-        return listado;
-    }
-    
+ 
 }

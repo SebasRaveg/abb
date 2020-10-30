@@ -11,19 +11,15 @@ import java.io.Serializable;
  *
  * @author seba3
  */
-public class Empleados implements Serializable{
+public class Cliente implements Serializable{
     private String identificacion;
     private String nombre;
-    private int edad;
+    private String ciudad;
+    private String referidoDe;
+    private String referidoN;
     
-    public Empleados(){
+    public Cliente(){
         
-    }
-    
-    public Empleados(String identificacion, String nombre, int edad){
-        this.edad = edad;
-        this.identificacion = identificacion;
-        this.nombre = nombre;
     }
 
     public String getIdentificacion() {
@@ -42,14 +38,27 @@ public class Empleados implements Serializable{
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
-    
-    
-    
+
+    public String getReferidoDe() {
+        return referidoDe;
+    }
+
+    public void setReferidoDe(String referidoDe) {
+        this.referidoDe = referidoDe;
+    }
+
+    public String getReferidoN() {
+        return referidoN;
+    }
+
+    public void setReferidoN(String referidoN) {
+        this.referidoN = referidoN;
+    }      
 }

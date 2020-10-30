@@ -13,19 +13,19 @@ import java.util.List;
  * @author seba3
  */
 public class NodoN2 {
-    private Empleados dato;
+    private Cliente dato;
     private List<NodoN2> hijos;
     
-    public NodoN2(Empleados dato){
+    public NodoN2(Cliente dato){
         this.dato = dato;
         this.hijos = new ArrayList<>();
     }
 
-    public Empleados getDato() {
+    public Cliente getDato() {
         return dato;
     }
 
-    public void setDato(Empleados dato) {
+    public void setDato(Cliente dato) {
         this.dato = dato;
     }
 
