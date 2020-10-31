@@ -14,12 +14,22 @@ import java.io.Serializable;
 public class Cliente implements Serializable{
     private String identificacion;
     private String nombre;
-    private String ciudad;
+    private String apellido;
+    private Ciudad ciudad;
     private String referidoDe;
-    private String referidoN;
+    private String referidoN; 
     
     public Cliente(){
         
+    }
+    
+    public Cliente(String identificacion, String nombre, String apellido, Ciudad ciudad, String referidoDe, String referidoN) {
+        this.identificacion = identificacion;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.ciudad = ciudad;
+        this.referidoDe = referidoDe;
+        this.referidoN = referidoN;
     }
 
     public String getIdentificacion() {
@@ -38,11 +48,19 @@ public class Cliente implements Serializable{
         this.nombre = nombre;
     }
 
-    public String getCiudad() {
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Ciudad getCiudad() {
         return ciudad;
     }
 
-    public void setCiudad(String ciudad) {
+    public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
 
@@ -60,5 +78,5 @@ public class Cliente implements Serializable{
 
     public void setReferidoN(String referidoN) {
         this.referidoN = referidoN;
-    }      
+    }   
 }

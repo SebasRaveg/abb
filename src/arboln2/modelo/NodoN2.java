@@ -20,7 +20,7 @@ public class NodoN2 {
         this.dato = dato;
         this.hijos = new ArrayList<>();
     }
-
+    
     public Cliente getDato() {
         return dato;
     }
@@ -35,14 +35,5 @@ public class NodoN2 {
 
     public void setHijos(List<NodoN2> hijos) {
         this.hijos = hijos;
-    }
-    
-    public int obtenerNumeroHijos(){
-        return hijos.size();
-    }
-            
-    public void aumentarHijo(NodoN2 hijo)
-    {
-        hijos.add(hijo);
     }
 }
