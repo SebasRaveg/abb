@@ -5,6 +5,7 @@
  */
 package arboln2.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,9 +13,13 @@ import java.util.List;
  *
  * @author seba3
  */
-public class NodoN2 {
+public class NodoN2 implements Serializable{
     private Cliente dato;
     private List<NodoN2> hijos;
+   
+    public NodoN2(){
+        
+    }
     
     public NodoN2(Cliente dato){
         this.dato = dato;

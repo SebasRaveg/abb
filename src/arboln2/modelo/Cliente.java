@@ -16,20 +16,19 @@ public class Cliente implements Serializable{
     private String nombre;
     private String apellido;
     private Ciudad ciudad;
-    private String referidoDe;
-    private String referidoN; 
+    private String referidoDe; 
     
     public Cliente(){
         
+        ciudad = new Ciudad();
     }
     
-    public Cliente(String identificacion, String nombre, String apellido, Ciudad ciudad, String referidoDe, String referidoN) {
+    public Cliente(String identificacion, String nombre, String apellido, Ciudad ciudad, String referidoDe) {
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.apellido = apellido;
         this.ciudad = ciudad;
         this.referidoDe = referidoDe;
-        this.referidoN = referidoN;
     }
 
     public String getIdentificacion() {
@@ -71,12 +70,5 @@ public class Cliente implements Serializable{
     public void setReferidoDe(String referidoDe) {
         this.referidoDe = referidoDe;
     }
-
-    public String getReferidoN() {
-        return referidoN;
-    }
-
-    public void setReferidoN(String referidoN) {
-        this.referidoN = referidoN;
-    }   
+  
 }

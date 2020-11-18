@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author seba3
  */
 public class ArbolN2 implements Serializable{
-    private NodoN2 raiz;
+     NodoN2 raiz;
 
     public NodoN2 getRaiz() {
         return raiz;
@@ -46,13 +46,8 @@ public class ArbolN2 implements Serializable{
         El que ingresa es a raiz
     */
     
-    public void insertarNodo(Cliente dato, String identificacionPadre, NodoN2 temp) throws ArbolNException{
-        /*
-        Si hay datos
-        Revisar si el cliente ya existe
-        Encontrar al padre
-        Si el padre existe adicionar
-        */
+    public void insertarNodo(Cliente dato, String identificacionPadre) throws ArbolNException{
+
         if(raiz == null){
             raiz = new NodoN2(dato);
         }
@@ -86,4 +81,7 @@ public class ArbolN2 implements Serializable{
         }
         return null; 
     }
+    
+    
+    
 }

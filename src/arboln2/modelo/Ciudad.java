@@ -12,10 +12,14 @@ import java.io.Serializable;
  * @author seba3
  */
 public class Ciudad implements Serializable{
-    private int codigo;
+    private short codigo;
     private String nombreCiudad;
     
-    public Ciudad(int codigo, String nombreCiudad){
+    public Ciudad(){
+        
+    }
+    
+    public Ciudad(short codigo, String nombreCiudad){
         this.codigo = codigo;
         this.nombreCiudad = nombreCiudad;
     }
@@ -24,7 +28,7 @@ public class Ciudad implements Serializable{
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(short codigo) {
         this.codigo = codigo;
     }
 
@@ -35,4 +39,10 @@ public class Ciudad implements Serializable{
     public void setNombreCiudad(String nombreCiudad) {
         this.nombreCiudad = nombreCiudad;
     }
+    
+    @Override
+    public String toString() {
+        return "Ciudad{" + "codigo=" + codigo + ", nombreCiudad=" + nombreCiudad + '}';
+    }
+    
 }
